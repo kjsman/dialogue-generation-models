@@ -75,7 +75,7 @@ If you use our software for research, please cite:
     year={2020},
     eprint={2001.09977},
     archivePrefix={arXiv},
-    primaryClass={cs.LG}
+    primaryClass={cs.CL}
 }
 ```
 
