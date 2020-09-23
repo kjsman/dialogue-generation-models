@@ -12,27 +12,27 @@ from dialogue_generation_models.modeling_gpt import GPT2LMHeadModel
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--pretrained-model-path",
-    default="/nas/models/gpt2/tmp_weights/large_filter.pth",
+    default="/nas/models/gpt2/torch_weights/large_filter.pth",
     type=str,
-    help="사전학습된 모델 경로",
+    help="Path to pre-trained model",
 )
 parser.add_argument(
     "--model-config-path",
     default="./configs/large_gpt_config.json",
     type=str,
-    help="모델 설정 파일",
+    help="Path to model configuration file",
 )
 parser.add_argument(
     "--tokenizer-model-path",
-    default="./tokenizer/tok.model",
+    default="./tokenizer/kr_spm.model",
     type=str,
-    help="sentencepiece model 경로",
+    help="Path to Sentencepiece model",
 )
 parser.add_argument(
     "--decoding-method",
     default="top_p",
     type=str,
-    help="디코딩 방법 (beam_search or top_p)",
+    help="Decoding method (beam_search or top_p)",
 )
 
 
