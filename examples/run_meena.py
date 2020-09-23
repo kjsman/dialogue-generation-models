@@ -10,11 +10,7 @@ from dialogue_generation_models.modeling_meena import MeenaForConditionalGenerat
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument(
-    "--pretrained-model-path",
-    type=str,
-    help="Path to pre-trained model",
-)
+parser.add_argument("--pretrained-model-path", type=str, help="Path to pre-trained model", required=True)
 parser.add_argument(
     "--model-config-path",
     default="./configs/base_meena_config.json",
@@ -29,7 +25,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--decoding-method",
-    default="beam_search",
+    default="top_p",
     type=str,
     help="Decoding method (beam_search or top_p)",
 )
@@ -56,18 +52,19 @@ def main(args):
 
     for context in contexts:
         # insert [SEPT] between input utterances
-        input_id = [
-            token_id
-            for raw_str in context
-            for token_id in tokenizer.encode(raw_str, out_type=int) + [config.sept_token_id]
-        ] + [config.bos_token_id]
-
-        input_tensor = torch.tensor([input_id])
+        input_ids = torch.tensor(
+            [
+                token_id
+                for raw_str in context
+                for token_id in tokenizer.encode(raw_str, out_type=int) + [config.sept_token_id]
+            ]
+            + [config.bos_token_id]
+        ).unsqueeze(0)
 
         if args.decoding_method == "top_p":
             outputs = model.generate(
-                input_ids=input_tensor,
-                max_length=256,
+                input_ids=input_ids,
+                max_length=48,
                 min_length=8,
                 temperature=1.0,
                 do_sample=True,
@@ -81,8 +78,8 @@ def main(args):
             )
         elif args.decoding_method == "beam_search":
             outputs = model.generate(
-                input_ids=input_tensor,
-                max_length=256,
+                input_ids=input_ids,
+                max_length=48,
                 min_length=8,
                 num_beams=10,
                 pad_token_id=config.pad_token_id,
@@ -90,7 +87,7 @@ def main(args):
                 eos_token_id=config.eos_token_id,
                 repetition_penalty=1.3,
                 no_repeat_ngram_size=3,
-                num_return_sequences=5,
+                num_return_sequences=10,
             )
         else:
             raise ValueError("Enter the right decoding method (top_p or beam_search)")
