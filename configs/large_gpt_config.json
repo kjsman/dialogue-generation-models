@@ -1,0 +1,14 @@
+{
+    "vocab_size": 32000,
+    "n_positions": 256,
+    "n_ctxt": 256,
+    "n_embd": 1024,
+    "n_inner": 4096,
+    "n_layer": 24,
+    "n_head": 16,
+    "pad_token_id": 0,
+    "unk_token_id": 1,
+    "bos_token_id": 2,
+    "eos_token_id": 3,
+    "sept_token_id": 4
+}
