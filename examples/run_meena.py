@@ -12,7 +12,6 @@ from dialogue_generation_models.modeling_meena import MeenaForConditionalGenerat
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--pretrained-model-path",
-    default="/nas/models/meena/torch_weights/base_filter.pth",
     type=str,
     help="Path to pre-trained model",
 )
@@ -53,17 +52,6 @@ def main(args):
         ["나 야나두 해보려고ㅋㅋ", "영어 배우게?", "웅웅"],
         ["나 야나두 해보려고ㅋㅋ", "영어 배우게?", "웅웅", "야나두 괜찮나?"],
         ["나 야나두 해보려고ㅋㅋ", "영어 배우게?", "웅웅", "야나두 괜찮나?", "주변에서 추천을 많이해줘서 한번 해보게"],
-        ["나 언제 데리러 올거야?"],
-        ["나 언제 데리러 올거야?", "수업 끝나고 바로 갈게"],
-        ["나 언제 데리러 올거야?", "수업 끝나고 바로 갈게", "얼마나 걸려?"],
-        ["나 언제 데리러 올거야?", "수업 끝나고 바로 갈게", "얼마나 걸려?", "한 10분 안에 끝날 거 같은데?"],
-        [
-            "나 언제 데리러 올거야?",
-            "수업 끝나고 바로 갈게",
-            "얼마나 걸려?",
-            "한 10분 안에 끝날 거 같은데?",
-            "그럼 건물 앞에서 기다릴게",
-        ],
     ]
 
     for context in contexts:
