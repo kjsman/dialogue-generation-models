@@ -12,7 +12,6 @@ from dialogue_generation_models.modeling_gpt import GPT2LMHeadModel
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--pretrained-model-path",
-    default="/nas/models/gpt2/torch_weights/large_filter.pth",
     type=str,
     help="Path to pre-trained model",
 )

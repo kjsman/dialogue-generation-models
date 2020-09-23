@@ -12,7 +12,6 @@ from dialogue_generation_models.modeling_meena import MeenaForConditionalGenerat
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--pretrained-model-path",
-    default="/nas/models/jp_meena/torch_weights/base_filter.pth",
     type=str,
     help="Path to pre-trained model",
 )
