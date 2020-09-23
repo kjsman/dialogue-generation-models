@@ -62,9 +62,9 @@ If you use our software for research, please cite:
 ``` bibtex
 @techreport{radford2019gpt2,
     title={Language Models are Unsupervised Multitask Learners},
-    author={"Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever"},
-    institution={"OpenAI"},
-    year={"2019"}
+    author={Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever},
+    institution={OpenAI},
+    year={2019}
 }
 ```
 
