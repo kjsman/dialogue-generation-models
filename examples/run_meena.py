@@ -14,25 +14,25 @@ parser.add_argument(
     "--pretrained-model-path",
     default="/nas/models/meena/torch_weights/base_filter.pth",
     type=str,
-    help="사전학습된 모델 경로",
+    help="Path to pre-trained model",
 )
 parser.add_argument(
     "--model-config-path",
     default="./configs/base_meena_config.json",
     type=str,
-    help="모델 설정 파일",
+    help="Path to model configuration file",
 )
 parser.add_argument(
     "--tokenizer-model-path",
-    default="./tokenizer/tok.model",
+    default="./tokenizer/kr_spm.model",
     type=str,
-    help="sentencepiece model 경로",
+    help="Path to Sentencepiece model",
 )
 parser.add_argument(
     "--decoding-method",
     default="beam_search",
     type=str,
-    help="디코딩 방법 (beam_search or top_p)",
+    help="Decoding method (beam_search or top_p)",
 )
 
 
@@ -67,7 +67,7 @@ def main(args):
     ]
 
     for context in contexts:
-        # 컨텍스트 문장 사이에 [SEPT] 토큰을 입력
+        # insert [SEPT] between input utterances
         input_id = [
             token_id
             for raw_str in context
@@ -105,7 +105,7 @@ def main(args):
                 num_return_sequences=5,
             )
         else:
-            raise ValueError("올바른 디코딩 방법을 입력해주세요.")
+            raise ValueError("Enter the right decoding method (top_p or beam_search)")
 
         context_str = " [SEPT] ".join(context)
         for output in outputs.tolist():
