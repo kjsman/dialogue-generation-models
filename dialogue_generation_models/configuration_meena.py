@@ -32,9 +32,9 @@ class MeenaConfig(PretrainedConfig):
         d_model (:obj:`int`, optional, defaults to 768):
             Dimensionality of the layers and the pooler layer.
         encoder_layers (:obj:`int`, optional, defaults to 2):
-            Number of encoder layers, 16 for pegasus, 6 for bart-base and marian
+            Number of encoder layers
         decoder_layers (:obj:`int`, optional, defaults to 12):
-            Number of decoder layers, 16 for pegasus, 6 for bart-base and marian
+            Number of decoder layers
         encoder_attention_heads (:obj:`int`, optional, defaults to 12):
             Number of attention heads for each attention layer in the Transformer encoder.
         decoder_attention_heads (:obj:`int`, optional, defaults to 12):
@@ -43,10 +43,6 @@ class MeenaConfig(PretrainedConfig):
             Dimensionality of the "intermediate" (i.e., feed-forward) layer in decoder.
         decoder_ffn_dim (:obj:`int`, optional, defaults to 3072):
             Dimensionality of the "intermediate" (i.e., feed-forward) layer in decoder.
-        encoder_layerdrop: (:obj:`float`, optional, defaults to 0.0):
-            Google "layerdrop arxiv", as its not explainable in one line.
-        decoder_layerdrop: (:obj:`float`, optional, defaults to 0.0):
-            Google "layerdrop arxiv", as its not explainable in one line.
         dropout (:obj:`float`, optional, defaults to 0.1):
             The dropout probabilitiy for all fully connected layers in the embeddings, encoder, and pooler.
         attention_dropout (:obj:`float`, optional, defaults to 0.0):
@@ -88,11 +84,9 @@ class MeenaConfig(PretrainedConfig):
         decoder_attention_heads: int = 12,
         encoder_ffn_dim: int = 3072,
         decoder_ffn_dim: int = 3072,
-        encoder_layerdrop: float = 0.0,
-        decoder_layerdrop: float = 0.0,
-        dropout: float = 0.0,
-        attention_dropout: float = 0.0,
-        activation_dropout: float = 0.0,
+        dropout: float = 0.1,
+        attention_dropout: float = 0.1,
+        activation_dropout: float = 0.1,
         max_position_embeddings: int = 256,
         max_encoder_length: int = 128,
         init_std: float = 0.02,
@@ -119,8 +113,6 @@ class MeenaConfig(PretrainedConfig):
         self.encoder_ffn_dim = encoder_ffn_dim
         self.encoder_layers = self.num_hidden_layers = encoder_layers
         self.encoder_attention_heads = encoder_attention_heads
-        self.encoder_layerdrop = encoder_layerdrop
-        self.decoder_layerdrop = decoder_layerdrop
         self.decoder_ffn_dim = decoder_ffn_dim
         self.decoder_layers = decoder_layers
         self.decoder_attention_heads = decoder_attention_heads
