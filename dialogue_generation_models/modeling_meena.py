@@ -191,7 +191,6 @@ class MeenaEncoder(nn.Module):
         super().__init__()
 
         self.dropout = config.dropout
-        self.layerdrop = config.encoder_layerdrop
 
         embed_dim = embed_tokens.embedding_dim
         self.embed_scale = math.sqrt(embed_dim)
@@ -247,12 +246,8 @@ class MeenaEncoder(nn.Module):
         for encoder_layer in self.layers:
             if output_hidden_states:
                 encoder_states.append(x)
-            # add LayerDrop (see https://arxiv.org/abs/1909.11556 for description)
-            dropout_probability = random.uniform(0, 1)
-            if self.training and (dropout_probability < self.layerdrop):  # skip the layer
-                attn = None
-            else:
-                x, attn = encoder_layer(x, attention_mask, output_attentions=output_attentions)
+
+            x, attn = encoder_layer(x, attention_mask, output_attentions=output_attentions)
 
             if output_attentions:
                 all_attentions = all_attentions + (attn,)
@@ -373,7 +368,6 @@ class MeenaDecoder(nn.Module):
     ):
         super().__init__()
         self.dropout = config.dropout
-        self.layerdrop = config.decoder_layerdrop
         self.padding_idx = embed_tokens.padding_idx
         self.position_start_idx = config.max_encoder_length
 
@@ -458,12 +452,8 @@ class MeenaDecoder(nn.Module):
         next_decoder_cache = []
 
         for idx, decoder_layer in enumerate(self.layers):
-            # add LayerDrop (see https://arxiv.org/abs/1909.11556 for description)
             if output_hidden_states:
                 all_hidden_states += (x,)
-            dropout_probability = random.uniform(0, 1)
-            if self.training and (dropout_probability < self.layerdrop):
-                continue
 
             layer_state = past_key_values[idx] if past_key_values is not None else None
 
