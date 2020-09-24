@@ -109,7 +109,8 @@ class MeenaConfig(PretrainedConfig):
         if "hidden_size" in common_kwargs:
             raise ValueError("hidden size is called d_model")
         super().__init__(
-            is_encoder_decoder=is_encoder_decoder, **common_kwargs,
+            is_encoder_decoder=is_encoder_decoder,
+            **common_kwargs,
         )
         self.vocab_size = vocab_size
         self.d_model = d_model
