@@ -9,7 +9,7 @@
 
 ## Downloads
 
-* You can download the pretrained GPT-2 and Meena models from [Release page](https://github.com/pingpong-ai/dialogue-generation-models/releases/tag/v1.0)
+* You can download the pretrained GPT-2 and Meena models from [Release page](https://github.com/pingpong-ai/dialogue-generation-models/releases/tag/v1.0).
     - **`GPT-base-trained-on-dialogue-data-only-KR`**
         - 한국어 대화 데이터로만 학습한 base size GPT-2
     - **`GPT-large-trained-on-dialogue-data-only-KR`**
@@ -28,9 +28,10 @@
         - 필터링을 거치지 않은 한국어 대화 데이터로 학습한 large size Meena
     - **`Meena-base-trained-on-dialogue-data-JP`**
         - 約5億件の日本語日常会話データで学習したbase sizeのMeena
+
 ## Usage
 
-* GPT 답변 생성 예시
+* GPT
 
 ``` sh
 PYTHONPATH=. python examples/run_gpt.py \
@@ -40,7 +41,7 @@ PYTHONPATH=. python examples/run_gpt.py \
         --decoding-method $DECODING_METHOD
 ```
 
-* Meena 답변 생성 예시
+* Meena
 
 ``` sh
 PYTHONPATH=. python examples/run_meena.py \
@@ -50,17 +51,27 @@ PYTHONPATH=. python examples/run_meena.py \
         --decoding-method $DECODING_METHOD
 ```
 
-* 예시 코드에는 답변의 디코딩 전략으로 Top-p Sampling (Nucleus Sampling), Beam Search을 구현해두었습니다.
-    - 두 디코딩 방식에는 정확성 (Sensibleness)과 다양성 (Specificity)의 트레이드 오프가 존재합니다.
-    - 답변의 정확성이 요구되는 경우는 Beam Search, 답변의 다양성이 요구되는 경우는 top-p sampling의 p를 높여서 사용하는 것을 권장드립니다.
+* We implement two decoding methods called **Top-p Sampling** and **Beam Search** as examples.
+    - There is a trade-off of **Accuracy** (Sensibleness) and **Diversity** (Specificity) between two decoding methods.
+    - **Beam Search** is a good choice if you prefer the accuracy of the answer, and **Top-p Sampling** is a good choice if you prefer the diversity of the answer.
 
-## Caution
+## Cautions
 
-* 모델의 생성 결과는 학습을 바탕으로 한 예측 결과에 불과할 뿐 절대 사실이 아니며 회사의 의견과 무관함을 알려드립니다.
+### Korean
+
+* 모델의 생성 결과는 통계적 학습을 바탕으로 한 예측 결과에 불과할 뿐, 절대 사실이 아니며 회사의 의견과 무관함을 알려드립니다.
 * 본 회사는 공개한 모델의 생성 결과에 대한 책임을 일절 지지 않습니다.
 * 본 레포는 모델의 학습 로직을 포함하고 있지 않습니다.
 * 공개한 모델은 원 논문에서 제안된 GPT-2 및 Meena 모델과 사이즈 및 구조적으로 일부 차이가 있습니다.
-* 본 학습은 대량의 카톡 데이터를 이용한 사전학습만 완료한 상태이기 때문에 실사용을 할 때는 모델을 원하는 목적에 맞게 파인튜닝한 뒤 사용하시는 것을 권장드립니다.
+* 공개한 모델은 대량의 카톡 데이터를 이용한 사전학습만 완료한 상태이기 때문에 실사용을 할 때는 모델을 원하는 목적에 맞게 파인튜닝한 뒤 사용하시는 것을 권장드립니다.
+
+### Japanese
+
+* モデルの生成結果は統計的機械学習を用いた予測結果であり、事実とは無関係な発話文が生成される可能性があります。この結果は当社の意思決定・判断を示すものではありません。
+* 当社は、公開したモデルの使用によって生じる損失、損害等について、いかなる場合においても一切責任を負いません。
+* 本レポジトリにはモデルの事前学習に関するソースコードが含まれておりません。
+* 公開したモデルには、オリジナル論文で提案されたGPT-2、Meenaとはサイズやモデルの構造において一部異なる部分が含まれております。
+* 公開したモデルは日常会話データを用いた事前学習のみを完了したものであり、実際に利用する場合には目的によって追加学習を行ってから利用することをお勧めします。
 
 ## License
 
