@@ -16,7 +16,6 @@
 HuggingFace의 Bart 모델 코드를 바탕으로 일부 재작성한 Meena 모델 코드입니다.
 원코드: https://github.com/huggingface/transformers/blob/master/src/transformers/modeling_bart.py
 """
-import math
 import warnings
 from typing import Dict, List, Optional, Tuple
 
@@ -428,7 +427,9 @@ class MeenaDecoder(nn.Module):
         _, seq_len = input_ids.shape[:2]
 
         # decoder position starts with max_encoder_length (default:128)
-        positions = (self.position_start_idx + torch.arange(seq_len, dtype=torch.long, device=input_ids.device)).unsqueeze(0)
+        positions = (
+            self.position_start_idx + torch.arange(seq_len, dtype=torch.long, device=input_ids.device)
+        ).unsqueeze(0)
         if use_cache:
             input_ids = input_ids[:, -1:]
             positions = positions[:, -1:]  # happens after we embed them

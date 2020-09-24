@@ -59,14 +59,18 @@ def main(args):
 
     for context in contexts:
         # insert [SEPT] between input utterances
-        input_ids = torch.tensor(
-            [
-                token_id
-                for utterance in context
-                for token_id in tokenizer.encode(utterance, out_type=int) + [config.sept_token_id]
-            ]
-            + [config.bos_token_id]
-        ).unsqueeze(0).to(device)
+        input_ids = (
+            torch.tensor(
+                [
+                    token_id
+                    for utterance in context
+                    for token_id in tokenizer.encode(utterance, out_type=int) + [config.sept_token_id]
+                ]
+                + [config.bos_token_id]
+            )
+            .unsqueeze(0)
+            .to(device)
+        )
 
         input_ids = input_ids
 
