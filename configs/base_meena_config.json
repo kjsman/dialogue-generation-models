@@ -1,0 +1,17 @@
+{
+    "vocab_size": 32000,
+    "max_position_embeddings": 256,
+    "max_encoder_length": 128,
+    "d_model": 768,
+    "encoder_ffn_dim": 3072,
+    "encoder_layers": 2,
+    "encoder_attention_heads": 12,
+    "decoder_ffn_dim": 3072,
+    "decoder_layers": 12,
+    "decoder_attention_heads": 12,
+    "pad_token_id": 0,
+    "unk_token_id": 1,
+    "bos_token_id": 2,
+    "eos_token_id": 3,
+    "sept_token_id": 4
+}
