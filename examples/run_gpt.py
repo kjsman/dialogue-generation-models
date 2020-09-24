@@ -32,15 +32,22 @@ parser.add_argument(
 
 
 def main(args):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    n_gpu = torch.cuda.device_count()
+
     np.random.seed(42)
     torch.manual_seed(42)
     random.seed(42)
+    if n_gpu > 0:
+        torch.cuda.manual_seed_all(42)
+
     tokenizer = spm.SentencePieceProcessor(model_file=args.tokenizer_model_path)
 
     config = GPT2Config.from_json(args.model_config_path)
     model = GPT2LMHeadModel(config)
     model.load_state_dict(torch.load(args.pretrained_model_path, map_location="cpu"))
     model.eval()
+    model.to(device)
 
     contexts = [
         ["나 야나두 해보려고ㅋㅋ"],
@@ -56,10 +63,11 @@ def main(args):
             [config.bos_token_id]
             + [
                 token_id
-                for raw_str in context
-                for token_id in tokenizer.encode(raw_str, out_type=int) + [config.sept_token_id]
+                for utterance in context
+                for token_id in tokenizer.encode(utterance, out_type=int) + [config.sept_token_id]
             ]
         ).unsqueeze(0)
+        input_ids = input_ids.to(device)
 
         if args.decoding_method == "top_p":
             outputs = model.generate(
@@ -92,7 +100,7 @@ def main(args):
                 bad_words_ids=[[config.sept_token_id]],
             )
         else:
-            raise ValueError("올바른 디코딩 방법을 입력해주세요.")
+            raise ValueError("Enter the right decoding method (top_p or beam_search)")
 
         context_str = " [SEPT] ".join(context)
 
