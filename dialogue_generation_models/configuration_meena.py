@@ -12,7 +12,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-""" Meena configuration"""
+"""
+Meena configuration
+HuggingFace의 Bart 모델 코드를 바탕으로 일부 재작성한 Meena configuration 코드입니다.
+원코드: https://github.com/huggingface/transformers/blob/master/src/transformers/configuration_bart.py
+"""
 import json
 from typing import Type, TypeVar
 
@@ -105,8 +109,7 @@ class MeenaConfig(PretrainedConfig):
         if "hidden_size" in common_kwargs:
             raise ValueError("hidden size is called d_model")
         super().__init__(
-            is_encoder_decoder=is_encoder_decoder,
-            **common_kwargs,
+            is_encoder_decoder=is_encoder_decoder, **common_kwargs,
         )
         self.vocab_size = vocab_size
         self.d_model = d_model
