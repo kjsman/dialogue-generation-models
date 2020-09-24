@@ -17,7 +17,6 @@ HuggingFace의 Bart 모델 코드를 바탕으로 일부 재작성한 Meena 모�
 원코드: https://github.com/huggingface/transformers/blob/master/src/transformers/modeling_bart.py
 """
 import math
-import random
 import warnings
 from typing import Dict, List, Optional, Tuple
 
@@ -192,8 +191,7 @@ class MeenaEncoder(nn.Module):
 
         self.dropout = config.dropout
 
-        embed_dim = embed_tokens.embedding_dim
-        self.embed_scale = math.sqrt(embed_dim)
+        self.embed_dim = embed_tokens.embedding_dim
         self.padding_idx = embed_tokens.padding_idx
 
         self.embed_tokens = embed_tokens
@@ -230,9 +228,10 @@ class MeenaEncoder(nn.Module):
 
         bsz, seq_len = input_ids.shape[:2]
 
-        inputs_embeds = self.embed_tokens(input_ids) * self.embed_scale
+        inputs_embeds = self.embed_tokens(input_ids)
+        inputs_embeds = inputs_embeds * (self.embed_dim ** 0.5)
 
-        positions = torch.arange(seq_len, dtype=torch.long)
+        positions = torch.arange(seq_len, dtype=torch.long, device=input_ids.device)
         embed_pos = self.embed_positions(positions)
 
         x = inputs_embeds + embed_pos
@@ -368,12 +367,11 @@ class MeenaDecoder(nn.Module):
     ):
         super().__init__()
         self.dropout = config.dropout
+        self.embed_dim = embed_tokens.embedding_dim
         self.padding_idx = embed_tokens.padding_idx
         self.position_start_idx = config.max_encoder_length
 
-        self.embed_scale = math.sqrt(config.d_model)
         self.embed_tokens = embed_tokens
-
         self.embed_positions = embed_positions
         self.layers = nn.ModuleList(
             [DecoderLayer(config) for _ in range(config.decoder_layers)]
@@ -430,13 +428,14 @@ class MeenaDecoder(nn.Module):
         _, seq_len = input_ids.shape[:2]
 
         # decoder position starts with max_encoder_length (default:128)
-        positions = (self.position_start_idx + torch.arange(seq_len, dtype=torch.long)).unsqueeze(0)
+        positions = (self.position_start_idx + torch.arange(seq_len, dtype=torch.long, device=input_ids.device)).unsqueeze(0)
         if use_cache:
             input_ids = input_ids[:, -1:]
             positions = positions[:, -1:]  # happens after we embed them
             # assert input_ids.ne(self.padding_idx).any()
 
-        x = self.embed_tokens(input_ids) * self.embed_scale
+        x = self.embed_tokens(input_ids)
+        x = x * (self.embed_dim ** 0.5)
         embed_pos = self.embed_positions(positions)
         x += embed_pos
 
