@@ -66,8 +66,7 @@ def main(args):
                 for utterance in context
                 for token_id in tokenizer.encode(utterance, out_type=int) + [config.sept_token_id]
             ]
-        ).unsqueeze(0)
-        input_ids = input_ids.to(device)
+        ).unsqueeze(0).to(device)
 
         if args.decoding_method == "top_p":
             outputs = model.generate(

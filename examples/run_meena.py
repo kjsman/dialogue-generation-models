@@ -66,14 +66,15 @@ def main(args):
                 for token_id in tokenizer.encode(utterance, out_type=int) + [config.sept_token_id]
             ]
             + [config.bos_token_id]
-        ).unsqueeze(0)
+        ).unsqueeze(0).to(device)
 
-        input_ids = input_ids.to(device)
+        input_ids = input_ids
 
         if args.decoding_method == "top_p":
             outputs = model.generate(
                 input_ids=input_ids,
-                max_length=2,
+                max_length=48,
+                min_length=8,
                 temperature=1.0,
                 do_sample=True,
                 top_p=0.8,
@@ -87,7 +88,8 @@ def main(args):
         elif args.decoding_method == "beam_search":
             outputs = model.generate(
                 input_ids=input_ids,
-                max_length=2,
+                max_length=48,
+                min_length=8,
                 num_beams=10,
                 pad_token_id=config.pad_token_id,
                 bos_token_id=config.bos_token_id,
