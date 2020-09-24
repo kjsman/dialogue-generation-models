@@ -1,5 +1,7 @@
 # Dialogue Generation Models
 
+![Lint and Format Python](https://github.com/pingpong-ai/dialogue-generation-models/workflows/Lint%20and%20Format%20Python/badge.svg)
+
 ## Introduction
 
 * This is a repository of pretrained dialogue generation models (GPT-2 and Meena) of Pingpong, ScatterLab.
