@@ -9,26 +9,25 @@
 
 ## Downloads
 
-* You can download the pretrained GPT-2 and Meena models from the link below.
-    - **[ `GPT-base-trained-on-dialogue-data-only-KR` ]()**
+* You can download the pretrained GPT-2 and Meena models from [Release page](https://github.com/pingpong-ai/dialogue-generation-models/releases/tag/v1.0)
+    - **`GPT-base-trained-on-dialogue-data-only-KR`**
         - 한국어 대화 데이터로만 학습한 base size GPT-2
-    - **[ `GPT-large-trained-on-dialogue-data-only-KR` ]()**
+    - **`GPT-large-trained-on-dialogue-data-only-KR`**
         - 한국어 대화 데이터로만 학습한 large size GPT-2
-    - **[ `GPT-base-trained-on-dialogue-and-wiki-KR` ]()**
+    - **`GPT-base-trained-on-dialogue-and-wiki-KR`**
         - 한국어 대화 데이터, 위키피디아, 나무위키로 학습한 base size GPT-2
-    - **[ `GPT-large-trained-on-dialogue-and-wiki-KR` ]()** (**Recommend**)
+    - **`GPT-large-trained-on-dialogue-and-wiki-KR`** (**Recommend**)
         - 한국어 대화 데이터, 위키피디아, 나무위키로 학습한 large size GPT-2
-    - **[ `Meena-base-trained-on-filtered-dialogue-data-KR` ]()**
+    - **`Meena-base-trained-on-filtered-dialogue-data-KR`**
         - 필터링된 한국어 대화 데이터로 학습한 base size Meena
-    - **[ `Meena-large-trained-on-filtered-dialogue-data-KR` ]()** (**Recommend**)
+    - **`Meena-large-trained-on-filtered-dialogue-data-KR`** (**Recommend**)
         - 필터링된 한국어 대화 데이터로 학습한 large size Meena
-    - **[ `Meena-base-trained-on-no-filtered-dialogue-data-KR` ]()**
+    - **`Meena-base-trained-on-no-filtered-dialogue-data-KR`**
         - 필터링을 거치지 않은 한국어 대화 데이터로 학습한 base size Meena
-    - **[ `Meena-large-trained-on-no-filtered-dialogue-data-KR` ]()**
+    - **`Meena-large-trained-on-no-filtered-dialogue-data-KR`**
         - 필터링을 거치지 않은 한국어 대화 데이터로 학습한 large size Meena
-    - **[ `Meena-base-trained-on-dialogue-data-JP` ]()**
+    - **`Meena-base-trained-on-dialogue-data-JP`**
         - 約5億件の日本語日常会話データで学習したbase sizeのMeena
-
 ## Usage
 
 * GPT 답변 생성 예시
