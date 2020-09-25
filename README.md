@@ -55,13 +55,14 @@ PYTHONPATH=. python examples/run_meena.py \
     - There is a trade-off of **Accuracy** (Sensibleness) and **Diversity** (Specificity) between two decoding methods.
     - **Beam Search** is a good choice if you prefer the accuracy of the answer, and **Top-p Sampling** is a good choice if you prefer the diversity of the answer.
 
-## Cautions
+## Notes
 
 ### Korean
 
-* 모델의 생성 결과는 통계적 학습을 바탕으로 한 예측 결과에 불과할 뿐, 절대 사실이 아니며 회사의 의견과 무관함을 알려드립니다.
-* 본 회사는 공개한 모델의 생성 결과에 대한 책임을 일절 지지 않습니다.
-* 본 레포는 모델의 학습 로직을 포함하고 있지 않습니다.
+* 모델의 생성 결과는 학습을 바탕으로 한 예측 결과이며 스캐터랩/핑퐁팀의 의견과 무관합니다.
+* 모델의 생성 결과는 가상의 대화 생성 결과이며 사실 여부를 담보하지 않습니다.
+* 스캐터랩/핑퐁팀은 공개한 모델의 생성 결과에 대한 책임을 지지 않습니다.
+* 본 레포지토리는 모델의 사전 학습 코드를 포함하고 있지 않습니다.
 * 공개한 모델은 원 논문에서 제안된 GPT-2 및 Meena 모델과 사이즈 및 구조적으로 일부 차이가 있습니다.
 * 공개한 모델은 대량의 카톡 데이터를 이용한 사전학습만 완료한 상태이기 때문에 실사용을 할 때는 모델을 원하는 목적에 맞게 파인튜닝한 뒤 사용하시는 것을 권장드립니다.
 
