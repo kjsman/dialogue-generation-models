@@ -6,6 +6,7 @@
 
 * This is a repository of pretrained dialogue generation models (GPT-2 and Meena) of Pingpong, ScatterLab.
 * You can refer to our [blog post](https://blog.pingpong.us/generation-model/) for detailed pre-training processes and experiment results.
+* Check our [Korean demo](https://pingpong.us/ko/generation) and [Japanese demo](https://pingpong.us/jp/generation) for the chatting experience.
 
 ## Downloads
 
