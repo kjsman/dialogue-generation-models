@@ -869,9 +869,9 @@ class MeenaForConditionalGeneration(PretrainedMeenaModel):
         self,
         decoder_input_ids,
         past=None,
-        attention_mask,
-        use_cache,
-        encoder_outputs,
+        attention_mask=None,
+        use_cache=None,
+        encoder_outputs=None,
         **kwargs,
     ):
         return {
