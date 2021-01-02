@@ -868,7 +868,7 @@ class MeenaForConditionalGeneration(PretrainedMeenaModel):
     def prepare_inputs_for_generation(
         self,
         decoder_input_ids,
-        past,
+        past=None,
         attention_mask,
         use_cache,
         encoder_outputs,
