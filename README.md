@@ -1,34 +1,22 @@
-# Dialogue Generation Models
+# 안내
 
-![Lint and Format Python](https://github.com/pingpong-ai/dialogue-generation-models/workflows/Lint%20and%20Format%20Python/badge.svg)
+* 본 레포지토리의 소유자는 스캐터랩/핑퐁팀과 어떠한 관계도 없습니다.
+  * [핑퐁팀의 원래 레포지토리](https://github.com/pingpong-ai/dialogue-generation-models)는 (삭제/비공개로 전환)되었습니다. [GitHub에서 Fork 기능이 작동하는 방식으로 인해](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/what-happens-to-forks-when-a-repository-is-deleted-or-changes-visibility), Fork의 Parent가 이 레포지토리로 변경된 것입니다.
+* [개인정보와 관련하여 이슈가 되는 점](https://namu.wiki/w/%EC%9D%B4%EB%A3%A8%EB%8B%A4(%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5)#s-7.3)을 고려하여, 사전 학습된 모델은 **공개하지 않습니다**.
+  * 즉, **이 레포지토리를 Fork/Clone하셔도, 대화 가능한 챗봇을 재현하실 수 없습니다**.
+* 다만 연구 자체가 가지는 학술적인 의미를 고려하여, 개인정보가 남아있지 않은 순수한 코드를 배포합니다.
+* 아래 내용은 기존의 `README.md`에서 일부 내용을 수정한 것입니다.
+
+# Dialogue Generation Models
 
 ## Introduction
 
 * This is a repository of pretrained dialogue generation models (GPT-2 and Meena) of Pingpong, ScatterLab.
-* You can refer to our [blog post](https://blog.pingpong.us/generation-model/) for detailed pre-training processes and experiment results.
-* Check our [Korean demo](https://pingpong.us/ko/generation) and [Japanese demo](https://pingpong.us/jp/generation) for the chatting experience.
+* You can refer to our [blog post (archive)](http://web.archive.org/web/20210113023101/https://blog.pingpong.us/generation-model/) for detailed pre-training processes and experiment results.
 
 ## Downloads
 
-* You can download the pretrained GPT-2 and Meena models from [Release page](https://github.com/pingpong-ai/dialogue-generation-models/releases/tag/v1.0).
-    - **`base_gpt_trained_on_dialogue_data_kr.pth`**
-        - 한국어 대화 데이터로만 학습한 base size GPT-2
-    - **`large_gpt_trained_on_dialogue_data_kr.pth`**
-        - 한국어 대화 데이터로만 학습한 large size GPT-2
-    - **`base_gpt_trained_on_wiki_and_dialogue_data_kr.pth`**
-        - 한국어 대화 데이터, 위키피디아, 나무위키로 학습한 base size GPT-2
-    - **`large_gpt_trained_on_wiki_and_dialogue_data_kr.pth`** (**Recommend**)
-        - 한국어 대화 데이터, 위키피디아, 나무위키로 학습한 large size GPT-2
-    - **`base_meena_trained_on_filtered_data_kr.pth`**
-        - 필터링된 한국어 대화 데이터로 학습한 base size Meena
-    - **`large_meena_trained_on_filtered_data_kr.pth`** (**Recommend**)
-        - 필터링된 한국어 대화 데이터로 학습한 large size Meena
-    - **`base_meena_trained_on_non_filtered_data_kr.pth`**
-        - 필터링을 거치지 않은 한국어 대화 데이터로 학습한 base size Meena
-    - **`large_meena_trained_on_non_filtered_data_kr.pth`**
-        - 필터링을 거치지 않은 한국어 대화 데이터로 학습한 large size Meena
-    - **`base_meena_trained_on_filtered_data_jp.pth`**
-        - 約5億件の日本語日常会話データで学習したbase sizeのMeena
+* You **can't** download the pretrained GPT-2 and Meena models; Original models have been deleted due to privacy concerns.
 
 ## Usage
 
@@ -64,8 +52,6 @@ PYTHONPATH=. python examples/run_meena.py \
 * 모델의 생성 결과는 가상의 대화 생성 결과이며 사실 여부를 담보하지 않습니다.
 * 스캐터랩/핑퐁팀은 공개한 모델의 생성 결과에 대한 책임을 지지 않습니다.
 * 본 레포지토리는 모델의 사전 학습 코드를 포함하고 있지 않습니다.
-* 공개한 모델은 원 논문에서 제안된 GPT-2 및 Meena 모델과 사이즈 및 구조적으로 일부 차이가 있습니다.
-* 공개한 모델은 대량의 카톡 데이터를 이용한 사전학습만 완료한 상태이기 때문에 실사용을 할 때는 모델을 원하는 목적에 맞게 파인튜닝한 뒤 사용하시는 것을 권장드립니다.
 * 모델의 상업적 활용에 대해서는 support@pingpong.us로 문의 부탁드립니다.
 
 ### Japanese
@@ -73,13 +59,11 @@ PYTHONPATH=. python examples/run_meena.py \
 * モデルの生成結果は統計的機械学習を用いた予測結果であり、事実とは無関係な発話文が生成される可能性があります。この結果は当社の意思決定や判断を示すものではありません。
 * 当社は、公開したモデルの使用によって生じる損失、損害等について、いかなる場合においても一切責任を負いません。
 * 本レポジトリにはモデルの事前学習に関するソースコードが含まれておりません。
-* 公開したモデルには、オリジナル論文で提案されたGPT-2、Meenaとはサイズやモデルの構造において一部異なる部分が含まれております。
-* 公開したモデルは日常会話データを用いた事前学習のみを完了したものであり、実際に利用する場合には目的によって追加学習を行ってから利用することをお勧めします。
 * モデルの商業的利用に関しては、support@pingpong.usから問い合わせお願いします。
 
 ## License
 
-The pretrained models and the codes in this repository are distributed under the terms of the [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+The codes in this repository are distributed under the terms of the [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
 
 ## Citation
 
