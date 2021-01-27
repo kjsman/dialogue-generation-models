@@ -17,6 +17,25 @@
 ## Downloads
 
 * You **can't** download the pretrained GPT-2 and Meena models; Original models have been deleted due to privacy concerns.
+* Following models *were* available.
+    - **`base_gpt_trained_on_dialogue_data_kr.pth`**
+        - 한국어 대화 데이터로만 학습한 base size GPT-2
+    - **`large_gpt_trained_on_dialogue_data_kr.pth`**
+        - 한국어 대화 데이터로만 학습한 large size GPT-2
+    - **`base_gpt_trained_on_wiki_and_dialogue_data_kr.pth`**
+        - 한국어 대화 데이터, 위키피디아, 나무위키로 학습한 base size GPT-2
+    - **`large_gpt_trained_on_wiki_and_dialogue_data_kr.pth`** (**Recommend**)
+        - 한국어 대화 데이터, 위키피디아, 나무위키로 학습한 large size GPT-2
+    - **`base_meena_trained_on_filtered_data_kr.pth`**
+        - 필터링된 한국어 대화 데이터로 학습한 base size Meena
+    - **`large_meena_trained_on_filtered_data_kr.pth`** (**Recommend**)
+        - 필터링된 한국어 대화 데이터로 학습한 large size Meena
+    - **`base_meena_trained_on_non_filtered_data_kr.pth`**
+        - 필터링을 거치지 않은 한국어 대화 데이터로 학습한 base size Meena
+    - **`large_meena_trained_on_non_filtered_data_kr.pth`**
+        - 필터링을 거치지 않은 한국어 대화 데이터로 학습한 large size Meena
+    - **`base_meena_trained_on_filtered_data_jp.pth`**
+        - 約5億件の日本語日常会話データで学習したbase sizeのMeena
 
 ## Usage
 
